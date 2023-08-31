@@ -1,0 +1,13 @@
+.footer {
+  margin: 0 auto;
+  width: 1120px;
+  height: 95px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #E7E7E7;
+  align-items: center;
+
+  &__label {}
+
+  &__rights {}
+}
