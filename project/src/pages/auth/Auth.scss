@@ -1,0 +1,26 @@
+.auth {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #E7E7E7;
+  width: 544px;
+  margin: 300px auto 0;
+
+  &__sign-in {}
+
+  &__title {
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    height: 72px;
+    text-align: center;
+    padding-top: 20px;
+    width: 300px;
+
+    &:hover {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  &__sign-up {}
+}

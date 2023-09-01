@@ -2,7 +2,6 @@
   margin: 0 auto;
   width: 1120px;
   height: 104px;
-  background-color: aquamarine;
   border-bottom: 1px solid #E7E7E7;
   display: flex;
   justify-content: space-between;
@@ -11,4 +10,8 @@
   &__title {}
 
   &__icons {}
+
+  &__icons-person {
+    margin: 0 20px;
+  }
 }
