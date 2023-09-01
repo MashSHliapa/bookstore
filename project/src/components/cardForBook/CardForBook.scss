@@ -1,0 +1,92 @@
+.book {
+  margin: 0 auto 50px;
+  width: 1120px;
+
+  &__title {
+    width: 1144px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 56px;
+    font-weight: 700px;
+    line-height: 64px;
+    margin: 60px 0 40px;
+  }
+
+  &__image {
+    width: 544px;
+    height: 472px;
+    background-color: #FEE9E2;
+    text-align: center;
+    padding-top: 50px;
+    position: relative;
+  }
+
+  &__card-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  &__data {
+    border: 1px solid #E7E7E7;
+    width: 448px;
+    height: 472px;
+    padding: 10px;
+    line-height: 32px;
+  }
+
+  &__estimate {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 40px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  &__authors {}
+
+  &__publisher {}
+
+  &__language {}
+
+  &__format {}
+
+  &__preview {
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 50px;
+  }
+
+  &__subtitle {
+    margin-top: 50px;
+    font-weight: 400;
+    width: 1120px;
+  }
+}
+
+.btn-secondary {
+  width: 428px;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link {
+  color: black;
+  margin-right: 20px;
+}
+
+.like {
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 494px;
+  top: 0;
+}

@@ -1,0 +1,39 @@
+.card {
+  width: 352px;
+  display: flex;
+
+  &__image-container {
+    width: 352px;
+    height: 300px;
+    background-color: #F4EEFD;
+    text-align: center;
+    padding-top: 30px;
+    border: 1px solid black;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    height: 130px;
+  }
+
+  &__subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    height: 70px;
+  }
+
+  &__estimate {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+  }
+}
+.img {
+  margin: 0 auto;
+}
