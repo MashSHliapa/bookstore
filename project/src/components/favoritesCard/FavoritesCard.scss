@@ -1,0 +1,52 @@
+.favorite-card {
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E7E7E7;
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__image {
+    background-color: #D7E4FD;
+    width: 280px;
+    padding-left: 40px;
+  }
+
+  &__data {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 20px;
+  }
+
+  &__description {
+    margin: 20px 0;
+    width: 446px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: "Bebas Neue", sans-serif;
+    margin-bottom: 15px;
+  }
+
+  &__subtitle {
+    font-weight: 400;
+  }
+
+  &__price {
+    font-weight: 400;
+    font-size: 40px;
+    font-family: "Bebas Neue", sans-serif;
+    align-items: center;
+  }
+
+  &__like {
+    position: absolute;
+    right: 50px;
+    top: 50px
+  }
+}

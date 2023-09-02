@@ -44,3 +44,4 @@ export interface BookInitialState {
   loading: boolean,
   error: null | string
 }
+

@@ -20,6 +20,12 @@
     position: relative;
   }
 
+  &__favorite {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
   &__card-group {
     display: flex;
     justify-content: space-between;
@@ -70,23 +76,4 @@
   width: 428px;
   text-transform: uppercase;
   margin-top: 50px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.nav-link {
-  color: black;
-  margin-right: 20px;
-}
-
-.like {
-  background-color: black;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  left: 494px;
-  top: 0;
 }

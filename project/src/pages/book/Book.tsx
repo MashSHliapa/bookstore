@@ -17,13 +17,13 @@ export function Book(): JSX.Element {
   const { data: book, loading, error } = useSelector(state => state.book)
   const dispatch = useDispatch()
 
-    useEffect(() => {
-      if (isbn13) {
-         dispatch(getBook({isbn13}))
-      }
-   }, [dispatch, isbn13])
+  useEffect(() => {
+    if (isbn13) {
+      dispatch(getBook({ isbn13 }))
+    }
+  }, [dispatch, isbn13])
 
-   if (loading) {
+  if (loading) {
     return <div>Loading...</div>
   }
   if (error) {

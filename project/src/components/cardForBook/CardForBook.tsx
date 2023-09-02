@@ -1,4 +1,5 @@
 import './CardForBook.scss'
+import { FavoritesCondition } from '../favoriteCondition/FavoriteCondition'
 
 
 export function CardForBook(props) {
@@ -7,8 +8,13 @@ export function CardForBook(props) {
     <div className="book">
       <div className="book__title">{props.book.title}</div>
       <div className="book__card-group">
+
         <div className="book__image">
+          <div className="book__favorite">
+            <FavoritesCondition book={props.book} />
+          </div>
           <img src={props.book.image} />
+
         </div>
         <div className="book__data">
           <div className="book__estimate">

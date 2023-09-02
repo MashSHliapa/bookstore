@@ -15,7 +15,7 @@ export function Header() {
       <NavLink to="/"><img src={bookstore} width="137" height="29" alt="" /></NavLink>
       </div>
       <div className="header__icons">
-        <img src={like} alt="" />
+        <NavLink to="/favorites"><img src={like} alt="" /></NavLink>
         <img src={book} alt="" />
         <NavLink to="/auth/sign-in"><img src={person} alt="" className="header__icons-person" /></NavLink>
       </div>

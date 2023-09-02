@@ -5,6 +5,7 @@ import { Book } from './pages/book/Book';
 import { SignIn } from './pages/signIn/SignIn';
 import { SignUp } from './pages/signUp/SignUp';
 import { Auth } from './pages/auth/Auth';
+import { Favorites } from './pages/favorites/Favorites'
 
 export const router = createBrowserRouter([
   { element: <Layout/>,
@@ -35,5 +36,7 @@ export const router = createBrowserRouter([
         },
       ]
     },
+    {path: '/favorites',
+    element: <Favorites/>}
   ]}
 ])
