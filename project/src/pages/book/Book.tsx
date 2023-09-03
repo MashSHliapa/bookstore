@@ -9,7 +9,6 @@ import { getBook } from '../../redux/bookSlice'
 // styles
 import './Book.scss'
 
-
 export function Book(): JSX.Element {
 
   const { isbn13 } = useParams<string>()
@@ -31,7 +30,7 @@ export function Book(): JSX.Element {
   }
 
   return (
-    <div>
+    <div className="book">
       <ComeBack />
       <CardForBook book={book} />
     </div>

@@ -13,8 +13,8 @@ export function Favorites() {
 
   function renderFavoriteCards() {
     const favoriteCard = favorite.map((item) => <FavoriteCard
-      key={item.isbn13}
-      book={item} />)
+    key={item.isbn13}
+    book={item}/>)
 
     console.log(favoriteCards)
     return favoriteCard

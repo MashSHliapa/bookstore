@@ -1,3 +1,3 @@
-export function setCartFromLocalStorage(name: string, data: unknown) {
+export function setCardFromLocalStorage(name: string, data: unknown) {
   localStorage.setItem(name, JSON.stringify(data))
 }

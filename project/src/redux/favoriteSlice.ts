@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getCartFromLocalStorage } from '../helpers/getCardFromLocalStorage'
-import { setCartFromLocalStorage } from '../helpers/setCardFromLocalStorage'
+import { getCardFromLocalStorage } from '../helpers/getCardFromLocalStorage'
+import { setCardFromLocalStorage } from '../helpers/setCardFromLocalStorage'
 import { BookResponse } from '../types/interfaces'
 
 
 export const favoriteSlice = createSlice({
   name: 'favorite',
   initialState: {
-    data: getCartFromLocalStorage('favorite')
+    data: getCardFromLocalStorage('favorite')
   },
   reducers: {
     setFavorite: (state, action) => {
@@ -15,12 +15,12 @@ export const favoriteSlice = createSlice({
       console.log(action)
       console.log(favoriteCards)
       state.data.push(favoriteCards)
-      setCartFromLocalStorage('favorite', state.data)
+      setCardFromLocalStorage('favorite', state.data)
     },
     removeFromFavorite: (state, action) => {
-      const findDeletedBookIndex = state.data.findIndex((item: BookResponse) => item.isbn13 == action.payload.isbn13)
-      state.data.splice(findDeletedBookIndex, 1)
-      setCartFromLocalStorage('favorite', state.data)
+      const bookIndexDeleted = state.data.findIndex((item: BookResponse) => item.isbn13 == action.payload.isbn13)
+      state.data.splice(bookIndexDeleted, 1)
+      setCardFromLocalStorage('favorite', state.data)
     }
   }
 })
