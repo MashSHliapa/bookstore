@@ -1,3 +1,4 @@
+// core
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -6,14 +7,13 @@ import { ComeBack } from '../../components/comeBack/ComeBack'
 import { CardForBook } from '../../components/cardForBook/CardForBook'
 // slice
 import { getBook } from '../../redux/bookSlice'
-// styles
-import './Book.scss'
+// types
+import { RootState } from '../../redux/store'
 
 export function Book(): JSX.Element {
 
   const { isbn13 } = useParams<string>()
-  console.log(isbn13)
-  const { data: book, loading, error } = useSelector(state => state.book)
+  const { data: book, loading, error } = useSelector((state: RootState) => state.book)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function Book(): JSX.Element {
   }
 
   return (
-    <div className="book">
+    <div className="book m-auto">
       <ComeBack />
       <CardForBook book={book} />
     </div>

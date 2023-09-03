@@ -1,12 +1,9 @@
-// import { createSlice } from "@reduxjs/toolkit/dist/createSlice";
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { BooksResponse, BooksInitialState } from '../types/interfaces';
-import { requestBooks } from '../services/books';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { requestBooks } from '../services/books'
 
-const fetchBooks = createAsyncThunk<BooksResponse>( 'books/fetchBooks', async() => {
-  return await requestBooks() as BooksResponse
+const fetchBooks = createAsyncThunk( 'books/fetchBooks', async() => {
+  return await requestBooks()
 })
-
 
 export const booksSlice = createSlice({
   name: 'books',
@@ -14,7 +11,7 @@ export const booksSlice = createSlice({
     data: [],
     loading: false,
     error: null as string | null,
-  } as BooksInitialState,
+  },
 
   reducers: {},
   extraReducers: builder => {

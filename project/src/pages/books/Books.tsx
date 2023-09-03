@@ -1,30 +1,28 @@
-import { useEffect, useState } from 'react'
-import { CardForBooks } from '../../components/cardForBooks/CardForBooks'
-import './Books.scss'
-import { DataBook } from '../../types/interfaces'
+// core
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBooks } from '../../redux/booksSlice'
+import { RootState } from '../../redux/store'
+import { ThunkDispatch } from 'redux-thunk'
+import { AnyAction } from 'redux';
+// components
+import { CardForBooks } from '../../components/cardForBooks/CardForBooks'
+// types
+import { BookResponse } from '../../types/interfaces'
+import { BooksResponse } from '../../types/interfaces'
+// styles
+import './Books.scss'
 
 export function Books() {
 
-  // const [books, setBooks] = useState([])
+  const { data: books, loading, error } = useSelector((state: RootState) => state.books)
 
-  // useEffect(() => {
-  //   fetch(`https://api.itbook.store/1.0/new`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setBooks(data.books)
-  //     })
-  // })
-
-  const { data: books, loading, error } = useSelector(state => state.books)
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<BooksResponse, null, AnyAction>>()
   useEffect(() => {
     dispatch(fetchBooks())
   }, [dispatch])
 
-  const cardPage1 = books.slice(0, 6).map((item: DataBook) => <CardForBooks key={item.isbn13} book={item} />) as JSX.Element[]
+  const cardPage1 = books.slice(0, 6).map((item: BookResponse) => <CardForBooks key={item.isbn13} book={item} />) as JSX.Element[]
 
 
   if (loading) {

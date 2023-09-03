@@ -1,24 +1,28 @@
-import x from '../images/x.svg'
+// components
 import { Counter } from '../counter/Counter'
+// images
+import x from '../images/x.svg'
+// types
+import { CardForCartProps } from '../../types/interfaces'
+// styles
 import './CardForCart.scss'
 
-
-export function CardForCart(props) {
+export function CardForCart(props: CardForCartProps) {
 
   return (
-    <div className="cart-card">
-      <div className="cart-card__image">
+    <div className="card-cart">
+      <div className="card-cart__image">
         <img src={props.book.image} width="200" height="200" alt="" ></img>
       </div>
       <div>
-        <div className="cart-card__data">
-          <div className="cart-card__description">
-            <div className="cart-card__title">{props.book.title}</div>
-            <div className="cart-card__subtitle">{props.book.subtitle}</div>
+        <div className="card-cart__data">
+          <div className="card-cart__description">
+            <div className="card-cart__title">{props.book.title}</div>
+            <div className="card-cart__subtitle">{props.book.subtitle}</div>
           </div>
-          <div className="cart-card__decision">
-            <div className="cart-card__price">{props.book.price}</div>
-            <div className="cart-card__delete">
+          <div className="card-cart__decision">
+            <div className="card-cart__price">{props.book.price}</div>
+            <div className="card-cart__delete">
               <img src={x} width="40" height="40" alt="" data-role="delete" data-id={props.book.isbn13} onClick={props.onDelete} />
             </div>
           </div>

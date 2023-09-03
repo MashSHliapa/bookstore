@@ -5,49 +5,46 @@ import { useState } from 'react'
 import { setCardFromLocalStorage } from '../../helpers/setCardFromLocalStorage'
 import { getCardFromLocalStorage } from '../../helpers/getCardFromLocalStorage'
 // redux
-import { increment, decrement, setCountValue } from '../../redux/cartSlice'
+import { setCountValue } from '../../redux/cartSlice'
 // components
 import { ComeBack } from '../../components/comeBack/ComeBack'
 import { CardForCart } from '../../components/cardForCart/CardForCart'
 import { TotalPrice } from '../../components/totalPrice/TotalPrice'
 // styles
 import './Cart.scss'
+// types
+import { RootState } from '../../redux/store'
+import { BookResponse } from '../../types/interfaces'
 
 export function Cart(): JSX.Element {
 
-  const yourCart = useSelector(state => {
+  const booksInCart = useSelector((state: RootState) => {
     console.log(state)
     return state.cart.data
   })
-  const [cart, setCart] = useState(yourCart)
+  const [cart, setCart] = useState(booksInCart)
 
-  const count = useSelector(state => state.cart.value)
+
+  const count = useSelector((state: RootState) => state.cart.value)
   const dispatch = useDispatch()
 
-  function handleClickDeletePost({ id } = event.target.dataset) {
-    const cardDeleted = cart.filter(item => item.isbn13 !== id);
-    setCart(cardDeleted)
-    setCardFromLocalStorage('cart', cardDeleted)
-    getCardFromLocalStorage('cart')
-  }
 
   ///////////Increment
   function handleClickIncrement({ id } = event.target.dataset) {
-    console.log('increment')
     console.log(id)
-    const item = cart.find(item => item.isbn13 === id)
+    const item = cart.find((item: BookResponse) => item.isbn13 === id)
     if (item) {
       dispatch(setCountValue(count + 1));
       console.log(item);
     }
-    if (count === 0) return
-    console.log(count);
   }
+
   ///////////Decrement
   function handleClickDecrement({ id } = event.target.dataset) {
+
     console.log('decrement')
     console.log(id)
-    const item = cart.find(item => item.isbn13 === id)
+    const item = cart.find((item: BookResponse) => item.isbn13 === id)
     if (item) {
       dispatch(setCountValue(count - 1));
       console.log(item);
@@ -57,9 +54,15 @@ export function Cart(): JSX.Element {
     }
     console.log(count);
   }
+  function handleClickDeletePost({ id } = event.target.dataset) {
+    const cardDeleted = cart.filter((item: BookResponse) => item.isbn13 !== id);
+    setCart(cardDeleted)
+    setCardFromLocalStorage('cart', cardDeleted)
+    getCardFromLocalStorage('cart')
+  }
 
   function renderCart() {
-    const booksInCart = cart.map((item) => <CardForCart
+    const booksInCart = cart.map((item: BookResponse) => <CardForCart
       key={item.isbn13}
       book={item}
       onClickIncrement={() => handleClickIncrement()}
@@ -77,7 +80,7 @@ export function Cart(): JSX.Element {
       <ComeBack />
       <div className="cart__title">Your Cart</div>
       <div>{renderCart()}</div>
-      <TotalPrice count={count} yourCart={cart} />
+      <TotalPrice count={count} booksInCart={cart} />
     </div>
   )
 }

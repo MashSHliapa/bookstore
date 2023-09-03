@@ -1,6 +1,7 @@
+// images
 import starBlack from '../images/starBlack.png'
 import starWhite from '../images/starWhite.png'
-import './Raiting.scss'
+
 
 export function Rating({ rating }: { rating: string }): JSX.Element {
   function renderRatingStar(): JSX.Element[] {
@@ -15,7 +16,7 @@ export function Rating({ rating }: { rating: string }): JSX.Element {
   }
 
   return (
-    <div className="rating">
+    <div className="rating d-flex justify-content-around w-50 h1">
       {renderRatingStar()}
     </div>
   )

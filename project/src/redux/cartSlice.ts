@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
+// helpers
 import { getCardFromLocalStorage } from '../helpers/getCardFromLocalStorage'
 import { setCardFromLocalStorage } from '../helpers/setCardFromLocalStorage'
 
@@ -16,19 +17,11 @@ const cartSlice = createSlice({
       state.data.push(cart)
       setCardFromLocalStorage('cart', state.data)
     },
-    // increment: (state) => {
-    //   state.value += 1
-    // },
-    // decrement: (state) => {
-    //   state.value -= 1
-    // },
-
     setCountValue: (state, action) => {
       state.value = action.payload
     }
   },
 })
 
-
-export const { setCart, increment, decrement, setCountValue } = cartSlice.actions
+export const { setCart, setCountValue } = cartSlice.actions
 export const cartReducer = cartSlice.reducer

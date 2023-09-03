@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
+// styles
 import './SignUp.scss'
 
 export function SignUp(): JSX.Element {
@@ -30,13 +31,13 @@ export function SignUp(): JSX.Element {
     if (password === passwordConfirm) {
       alert(`Your email: ${email}, Your password: ${password} `)
     } else {
-      alert('Check tour password')
+      alert('Check your password')
     }
   }
 
   return (
     <div className="sign-up">
-      <form className="form mt-3 mb-5" onChange={handleSubmitForm}>
+      <form className="form mt-3 mb-5" onSubmit={handleSubmitForm}>
         <div className="mb-3 mt-5">
           <label htmlFor="exampleInputName" className="form-label">Name</label>
           <input type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Your name" value={name} onChange={hangleChangeName} />

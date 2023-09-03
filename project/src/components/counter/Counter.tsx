@@ -1,5 +1,9 @@
+// types
+import { CounterProps } from '../../types/interfaces'
+// styles
 import './Counter.scss'
-export function Counter(props): JSX.Element {
+
+export function Counter(props:CounterProps): JSX.Element {
 
   return (
     <div className="counter d-flex align-self-end">

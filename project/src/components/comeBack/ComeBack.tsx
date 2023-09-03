@@ -1,4 +1,6 @@
+// images
 import arrow from '../images/arrow.png'
+// style
 import './ComeBack.scss'
 
 export function ComeBack() {
