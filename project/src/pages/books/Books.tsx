@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchBooks } from '../../redux/booksSlice'
 import { RootState } from '../../redux/store'
 import { ThunkDispatch } from 'redux-thunk'
-import { AnyAction } from 'redux';
+import { AnyAction } from 'redux'
 // components
 import { CardForBooks } from '../../components/cardForBooks/CardForBooks'
 // types

@@ -1,4 +1,4 @@
-import { createBrowserRouter} from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { Books } from './pages/books/Books';
 import { Book } from './pages/book/Book';
@@ -7,41 +7,61 @@ import { SignUp } from './pages/signUp/SignUp';
 import { Auth } from './pages/auth/Auth';
 import { Favorites } from './pages/favorites/Favorites'
 import { Cart } from './pages/cart/Cart'
+import { Search } from './pages/search/Search'
 
 export const router = createBrowserRouter([
-  { element: <Layout/>,
-  children:[
-    {path: '/',
-    element: <Books/>},
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Books />
+      },
 
-    {path: '/selected/:isbn13',
-    element: <Book/>},
+      {
+        path: '/selected/:isbn13',
+        element: <Book />
+      },
 
-    {path: '/sign-in',
-    element: <SignIn/>},
+      {
+        path: '/sign-in',
+        element: <SignIn />
+      },
 
-    {path: '/sign-up',
-    element: <SignUp/>},
+      {
+        path: '/sign-up',
+        element: <SignUp />
+      },
 
-    { // сделать новый layout(auth)
-      element: <Auth />,
-      path: '/auth',
-      children: [
-        {
-          path: '/auth/sign-up',
-          element: <SignUp />
-        },
-        {
-          path: '/auth/sign-in',
-          element: <SignIn />
-        },
-      ]
-    },
+      { // сделать новый layout(auth)
+        element: <Auth />,
+        path: '/auth',
+        children: [
+          {
+            path: '/auth/sign-up',
+            element: <SignUp />
+          },
+          {
+            path: '/auth/sign-in',
+            element: <SignIn />
+          },
+        ]
+      },
 
-    {path: '/favorites',
-    element: <Favorites/>},
+      {
+        path: '/favorites',
+        element: <Favorites />
+      },
 
-    {path: '/cart',
-    element: <Cart/>}
-  ]}
+      {
+        path: '/cart',
+        element: <Cart />
+      },
+
+      {
+        path: '/search/:query',
+        element: <Search />
+      }
+    ]
+  }
 ])

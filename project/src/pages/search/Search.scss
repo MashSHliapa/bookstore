@@ -1,0 +1,19 @@
+.search {
+  width: 1120px;
+  margin: 0 auto;
+
+  &__title {
+    width: 1144px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 56px;
+    font-weight: 700px;
+    line-height: 64px;
+    margin: 40px 50px;
+  }
+
+  &__data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

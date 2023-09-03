@@ -1,8 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { requestBooks } from '../services/books'
+import { requestSearchBooks } from '../services/books'
 
 const fetchBooks = createAsyncThunk( 'books/fetchBooks', async() => {
   return await requestBooks()
+})
+
+const fetchSearchBooks = createAsyncThunk('books/fetchSearchBooks', async({query}) => {
+  return await requestSearchBooks(query)
 })
 
 export const booksSlice = createSlice({
@@ -26,8 +31,14 @@ export const booksSlice = createSlice({
       state.loading = false
       state.error = 'Что-то пошло не так' as string
     })
+
+    // search
+    builder.addCase(fetchSearchBooks.fulfilled, (state, action) => {
+      state.loading = false
+      state.data = action.payload.books
+    })
   }
 })
 
-export { fetchBooks }
+export { fetchBooks, fetchSearchBooks }
 export const booksReducer = booksSlice.reducer
