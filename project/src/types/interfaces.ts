@@ -68,3 +68,10 @@ export interface CounterProps {
   count: number;
   id: string
 }
+
+export interface PaginationProps {
+  renderPagination: () => JSX.Element;
+  page: number;
+  pagesCounter: number;
+  query: string
+}

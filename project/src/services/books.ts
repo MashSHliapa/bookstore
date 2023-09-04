@@ -14,7 +14,7 @@ export const requestBookById = async (isbn13: string) => {
   return data
 }
 
-export const requestSearchBooks = async (query: string) => {
-  const { data } = await client.get(searchEndpoint + '/' + query)
+export const requestSearchBooks = async (query, page) => {
+  const { data } = await client.get(searchEndpoint + '/' + query + '/' + page)
   return data
 }

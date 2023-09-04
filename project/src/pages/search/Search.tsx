@@ -4,24 +4,26 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 // components
 import { CardForBooks } from "../../components/cardForBooks/CardForBooks"
+import { Pagination } from "../../components/pagination/Pagination"
 // redux
 import { fetchSearchBooks } from "../../redux/booksSlice"
 // types
 import { BookResponse } from "../../types/interfaces"
 import { ThunkDispatch } from 'redux-thunk'
-import { AnyAction } from 'redux'
+import { AnyAction } from "redux"
 import { RootState } from "../../redux/store"
 // styles
 import './Search.scss'
 
-export function Search() {
-  const { data: book, loading, error } = useSelector((state: RootState) => state.books)
+export function Search(): JSX.Element {
+  const { data: book, loading, error, pagesCounter } = useSelector((state: RootState) => state.books)
   const dispatch = useDispatch<ThunkDispatch<BookResponse, null, AnyAction>>()
-  const { query } = useParams()
+  const { query, page } = useParams()
 
   useEffect(() => {
-    dispatch(fetchSearchBooks({ query: query }))
-  }, [dispatch, query])
+    dispatch(fetchSearchBooks({ query: query, page: page }))
+  }, [dispatch, query, page])
+
 
   if (loading) {
     return <div>Loading...</div>
@@ -36,6 +38,14 @@ export function Search() {
     <div className="search">
       <div className="search__title">`{query}` Search results</div>
       <div className="search__data">{searchBooks}</div>
+      <nav aria-label="Page navigation example">
+        <ul className="pagination">
+          <Pagination renderPagination={() => renderPagination()}
+            page={page}
+            pagesCounter={pagesCounter}
+            query={query} />
+        </ul>
+      </nav>
     </div>
   )
 }

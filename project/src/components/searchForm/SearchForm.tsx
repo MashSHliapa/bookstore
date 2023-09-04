@@ -11,7 +11,7 @@ const navigate = useNavigate()
   function handleSubmitForm(event) {
     event.preventDefault()
     console.log(query)
-    navigate(`/search/${query}`)
+    navigate(`/search/${query}/1`)
   }
 
   return (
