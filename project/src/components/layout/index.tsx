@@ -1,8 +1,8 @@
 // core
 import { Outlet } from 'react-router-dom'
 // components
-import { Header } from '../header/Header'
-import { Footer } from '../footer/Footer'
+import { Header } from '../Header/'
+import { Footer } from '../Footer'
 // styles
 import './Layout.scss'
 

@@ -1,27 +1,35 @@
+// core
 import { createSlice } from '@reduxjs/toolkit'
 // helpers
 import { getCardFromLocalStorage } from '../helpers/getCardFromLocalStorage'
 import { setCardFromLocalStorage } from '../helpers/setCardFromLocalStorage'
+// types
+import { BookResponse } from '../types/interfaces'
 
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     data: getCardFromLocalStorage('cart'),
-    value: 1,
   },
   reducers: {
-    setCart: (state, action) => {
-      console.log(action)
+    addBookToCart: (state, action) => {
       const cart = action.payload
       state.data.push(cart)
       setCardFromLocalStorage('cart', state.data)
     },
-    setCountValue: (state, action) => {
-      state.value = action.payload
+    setIncrement: (state, action) => {
+      const increment = action.payload
+      state.data.push(increment)
+      setCardFromLocalStorage('cart', state.data)
+    },
+    setDecrement: (state, action) => {
+      const decrement = state.data.findIndex((item: BookResponse) => item.isbn13 == action.payload.isbn13)
+      state.data.splice(decrement, 1)
+      setCardFromLocalStorage('cart', state.data)
     }
   },
 })
 
-export const { setCart, setCountValue } = cartSlice.actions
+export const { addBookToCart } = cartSlice.actions
 export const cartReducer = cartSlice.reducer

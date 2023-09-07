@@ -1,17 +1,18 @@
 // core
 import { useSelector, useDispatch } from 'react-redux'
-// redux
-import { removeFromFavorite, setFavorite } from '../../redux/favoriteSlice'
+// slices
+import { removeFromFavorite, addBookToFavorite } from '../../redux/favoriteSlice'
 // images
 import redheart from '../images/redheart.svg'
 import heart from '../images/heart.svg'
-// types
+// store
 import { RootState } from '../../redux/store'
+// types
 import { BookResponse } from '../../types/interfaces'
-import { CardForBookProps } from '../../types/interfaces'
+import { BookProps } from '../../types/interfaces'
 
 
-export function FavoritesCondition(props: CardForBookProps): JSX.Element {
+export function FavoritesCondition(props: BookProps): JSX.Element {
 
    const isChecked: boolean = useSelector((state: RootState) => {
       return state.favorite.data.some((item: BookResponse) => item.isbn13 === props.book.isbn13)
@@ -20,11 +21,9 @@ export function FavoritesCondition(props: CardForBookProps): JSX.Element {
 
    function handleClickToogleFavorite() {
       if (isChecked) {
-         console.log('удалить из избранного')
          dispatch(removeFromFavorite(props.book))
       } else {
-         console.log('включить избранное')
-         dispatch(setFavorite(props.book))
+         dispatch(addBookToFavorite(props.book))
       }
    }
 

@@ -14,8 +14,8 @@ export interface BooksResponse {
   books: DataBook[]
 }
 
-export interface BooksInitialState {
-  data: BooksResponse;
+export interface BookInitialState {
+  data: BookResponse;
   loading: boolean;
   error: null | string
 }
@@ -39,6 +39,7 @@ export interface BookResponse {
   pdf?: {
     'Free eBook': string,
     'Chapter 2': string
+    'Chapter 3': string
   }
 }
 
@@ -48,11 +49,11 @@ export interface BookInitialState {
   error: null | string
 }
 
-export interface CardForBookProps {
+export interface BookProps {
   book: BookResponse
 }
 
-export interface CardForCartProps {
+export interface CartProps {
   book: BookResponse;
   onDelete: () => void;
   onClickDecrement: () => void;
@@ -69,9 +70,15 @@ export interface CounterProps {
   id: string
 }
 
-export interface PaginationProps {
+
+
+export interface PaginationBooksProps {
   renderPagination: () => JSX.Element;
-  page: number;
-  pagesCounter: number;
-  query: string
+}
+
+export interface V {
+
+  total?: string;
+
+  book: BookResponse
 }

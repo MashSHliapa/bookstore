@@ -1,17 +1,17 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
 
+export function Pagination({ page, pagesCounter, query }:{ page: number, pagesCounter: number, query: string}): JSX.Element {
 
-export function Pagination({ page, pagesCounter, query }:{ page: number, pagesCounter: number, query: string }): JSX.Element {
   function buildPaginationScheme() {
     const prevPageNumber = +page - 1
     const nextPageNumber = +page + 1
     const scheme = [1, prevPageNumber, +page, nextPageNumber, pagesCounter]
     const filteredScheme = scheme.filter(item => item > 0 && item <= pagesCounter)
     const set = new Set(filteredScheme)
-    const result = Array.from(set)
+    const result: Array<number | string> = Array.from(set)
 
-    if (result[0] + 1 !== result[1]) result.splice(1, 0, '...')
-    if (result[result.length - 2] + 1 !== result[result.length - 1]) result.splice(result.length - 1, 0, '...')
+    if (typeof result[0] === 'number' && +result[0] + 1 !== +result[1]) result.splice(1, 0, '...')
+  if (typeof result[result.length - 2] === 'number' && +result[result.length - 2] + 1 !== +result[result.length - 1]) result.splice(result.length - 1, 0, '...')
     return result
   }
 

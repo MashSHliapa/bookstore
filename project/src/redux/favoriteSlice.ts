@@ -1,6 +1,9 @@
+// core
 import { createSlice } from '@reduxjs/toolkit'
+// helpers
 import { getCardFromLocalStorage } from '../helpers/getCardFromLocalStorage'
 import { setCardFromLocalStorage } from '../helpers/setCardFromLocalStorage'
+// types
 import { BookResponse } from '../types/interfaces'
 
 
@@ -10,10 +13,8 @@ export const favoriteSlice = createSlice({
     data: getCardFromLocalStorage('favorite')
   },
   reducers: {
-    setFavorite: (state, action) => {
+    addBookToFavorite: (state, action) => {
       const favoriteCards = action.payload
-      console.log(action)
-      console.log(favoriteCards)
       state.data.push(favoriteCards)
       setCardFromLocalStorage('favorite', state.data)
     },
@@ -25,6 +26,6 @@ export const favoriteSlice = createSlice({
   }
 })
 
-export const { setFavorite, removeFromFavorite } = favoriteSlice.actions
+export const { addBookToFavorite, removeFromFavorite } = favoriteSlice.actions
 export const favoriteReducer = favoriteSlice.reducer
 

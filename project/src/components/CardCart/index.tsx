@@ -1,13 +1,14 @@
 // components
-import { Counter } from '../counter/Counter'
+import { Counter } from '../Counter'
 // images
 import x from '../images/x.svg'
 // types
-import { CardForCartProps } from '../../types/interfaces'
+import { CartProps } from '../../types/interfaces'
 // styles
-import './CardForCart.scss'
+import './CardCart.scss'
 
-export function CardForCart(props: CardForCartProps) {
+
+export function CardCart(props: CartProps) {
 
   return (
     <div className="card-cart">
@@ -23,10 +24,11 @@ export function CardForCart(props: CardForCartProps) {
           <div className="card-cart__decision">
             <div className="card-cart__price">{props.book.price}</div>
             <div className="card-cart__delete">
-              <img src={x} width="40" height="40" alt="" data-role="delete" data-id={props.book.isbn13} onClick={props.onDelete} />
+              <img src={x} width="40" height="40" alt="" data-id={props.book.isbn13} onClick={props.onDelete} />
             </div>
           </div>
         </div>
+
         <Counter
           onClickDecrement={props.onClickDecrement}
           onClickIncrement={props.onClickIncrement}

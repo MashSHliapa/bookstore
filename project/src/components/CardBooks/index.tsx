@@ -1,11 +1,11 @@
 // core
 import { Link } from 'react-router-dom'
 // types
-import { CardForBookProps } from '../../types/interfaces'
+import { BookProps } from '../../types/interfaces'
 // styles
-import './CardForBooks.scss'
+import './CardBooks.scss'
 
-export function CardForBooks(props: CardForBookProps) {
+export function CardBooks(props: BookProps) {
   return (
     <div className="card">
       <div className="card__image-container">

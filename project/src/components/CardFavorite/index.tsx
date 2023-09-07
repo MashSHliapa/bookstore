@@ -1,11 +1,11 @@
 // components
-import { FavoritesCondition } from '../favoriteCondition/FavoriteCondition'
+import { FavoritesCondition } from '../FavoriteCondition'
 // types
-import { CardForBookProps } from '../../types/interfaces'
+import { BookProps } from '../../types/interfaces'
 // styles
-import './CardForFavorite.scss'
+import './CardFavorite.scss'
 
-export function CardForFavorite(props: CardForBookProps) {
+export function CardFavorite(props: BookProps) {
   return (
     <div className="card-favorite">
       <div className="card-favorite__image">

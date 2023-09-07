@@ -1,3 +1,4 @@
+// core
 import { configureStore } from '@reduxjs/toolkit'
 import { takeEvery } from 'redux-saga/effects'
 import createSagaMiddleware from 'redux-saga'
@@ -13,6 +14,7 @@ const sagaMiddleware = createSagaMiddleware()
 function* sagas() {
   yield takeEvery(GET_BOOK, getBookSaga)
 }
+console.log(GET_BOOK)
 
 export const store = configureStore({
   reducer: {

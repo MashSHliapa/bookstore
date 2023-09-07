@@ -1,11 +1,12 @@
+// core
+import { NavLink } from 'react-router-dom'
 // images
 import bookstore from '../images/bookstore.png'
 import like from '../images/like.svg'
 import book from '../images/book.svg'
 import person from '../images/person.svg'
-import { NavLink } from 'react-router-dom'
 // components
-import { SearchForm } from '../searchForm/SearchForm'
+import { SearchForm } from '../SearchForm'
 // styles
 import './Header.scss';
 
@@ -15,7 +16,7 @@ export function Header() {
   return (
     <div className="header">
       <div className="header__title">
-      <NavLink to="/"><img src={bookstore} width="137" height="29" alt="" /></NavLink>
+        <NavLink to="/"><img src={bookstore} width="137" height="29" alt="" /></NavLink>
       </div>
       <SearchForm />
       <div className="header__icons">

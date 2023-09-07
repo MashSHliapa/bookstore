@@ -1,3 +1,4 @@
+// core
 import { useState, ChangeEvent, FormEvent } from 'react'
 // styles
 import './SignUp.scss'
@@ -7,13 +8,11 @@ export function SignUp(): JSX.Element {
   const [name, setName] = useState<string>('')
   function hangleChangeName(event: ChangeEvent<HTMLInputElement>) {
     setName(event.target.value)
-    console.log(event.target.value)
   }
 
   const [email, setEmail] = useState<string>('')
   function hangleChangeEmail(event: ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value)
-    console.log(event.target.value)
   }
 
   const [password, setPassword] = useState<string>('')
@@ -37,8 +36,8 @@ export function SignUp(): JSX.Element {
 
   return (
     <div className="sign-up">
-      <form className="form mt-3 mb-5" onSubmit={handleSubmitForm}>
-        <div className="mb-3 mt-5">
+      <form className="form" onSubmit={handleSubmitForm}>
+        <div className="pb-3 pt-5">
           <label htmlFor="exampleInputName" className="form-label">Name</label>
           <input type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Your name" value={name} onChange={hangleChangeName} />
         </div>
@@ -54,7 +53,7 @@ export function SignUp(): JSX.Element {
           <label htmlFor="exampleInputConfirmPassword" className="form-label">Confirm Password</label>
           <input type="password" className="form-control" id="exampleInputConfirmPassword" placeholder="Confirm your password" value={passwordConfirm} onChange={handleInputPasswordConfirm} />
         </div>
-        <button type="submit" className="btn btn-secondary">SIGN Up</button>
+        <button type="submit" className="btn btn-secondary mb-5">SIGN Up</button>
       </form>
     </div>
   )

@@ -1,12 +1,14 @@
+// core
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { requestBooks } from '../services/books'
-import { requestSearchBooks } from '../services/books'
+// services
+import { requestBooks, requestSearchBooks } from '../services/books'
+
 
 const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   return await requestBooks()
 })
 
-const fetchSearchBooks = createAsyncThunk('books/fetchSearchBooks', async ({ query, page = '' }: { query: string, page?: string }) => {
+const fetchSearchBooks = createAsyncThunk('books/fetchSearchBooks', async ({ query='', page = '' }: { query?: string, page?: string }) => {
   return await requestSearchBooks(query, page)
 })
 
@@ -17,7 +19,8 @@ export const booksSlice = createSlice({
     loading: false,
     error: null as string | null,
     pagesCounter: 0,
-    limit: 10
+    limit: 10,
+    total: 0
   },
 
   reducers: {},
@@ -38,9 +41,10 @@ export const booksSlice = createSlice({
     builder.addCase(fetchSearchBooks.fulfilled, (state, action) => {
       state.loading = false
       state.data = action.payload.books
+      state.total = action.payload.total
 
       if (state.pagesCounter) return
-      state.pagesCounter = Math.ceil(action.payload.total / state.limit)
+      state.pagesCounter = Math.ceil(Number(action.payload.total / state.limit))
     })
   }
 })

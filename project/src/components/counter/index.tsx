@@ -12,7 +12,7 @@ export function Counter(props:CounterProps): JSX.Element {
       </div>
       <div className="counter__number me-5 fs-7">{props.count}</div>
       <div className="counter__plus">
-        <button className="border-0" data-id={props.id} onClick={props.onClickIncrement} data-role="increment">+</button>
+        <button className="border-0" onClick={props.onClickIncrement} data-id={props.id}data-role="increment">+</button>
       </div>
     </div>
   )

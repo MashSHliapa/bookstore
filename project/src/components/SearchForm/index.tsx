@@ -1,16 +1,14 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
+import { useState, ChangeEvent, FormEvent } from 'react'
 
 export function SearchForm() {
 const [query, setQuery] = useState('')
 const navigate = useNavigate()
-  function handleInputQuery(event) {
+  function handleInputQuery(event: ChangeEvent<HTMLInputElement>) {
     (setQuery(event.target.value))
-    console.log(query)
   }
-  function handleSubmitForm(event) {
+  function handleSubmitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    console.log(query)
     navigate(`/search/${query}/1`)
   }
 

@@ -1,13 +1,17 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { Layout } from './components/layout/Layout';
-import { Books } from './pages/books/Books';
-import { Book } from './pages/book/Book';
-import { SignIn } from './pages/signIn/SignIn';
-import { SignUp } from './pages/signUp/SignUp';
-import { Auth } from './pages/auth/Auth';
-import { Favorites } from './pages/favorites/Favorites'
-import { Cart } from './pages/cart/Cart'
-import { Search } from './pages/search/Search'
+// core
+import { createBrowserRouter } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+// components
+import { Layout } from './components/Layout'
+import { Books } from './pages/Books'
+import { Book } from './pages/Book'
+import { SignIn } from './pages/SignIn'
+import { SignUp } from './pages/SignUp'
+import { Auth } from './pages/Auth'
+import { Favorites } from './pages/Favorites'
+import { Cart } from './pages/Cart'
+import { Search } from './pages/Search'
+
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +19,10 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Navigate to="/books/pages/1" replace={true} />
+      },
+      {
+        path: '/books/pages/:pageNumber',
         element: <Books />
       },
 
@@ -33,7 +41,7 @@ export const router = createBrowserRouter([
         element: <SignUp />
       },
 
-      { // сделать новый layout(auth)
+      {
         element: <Auth />,
         path: '/auth',
         children: [
@@ -61,7 +69,7 @@ export const router = createBrowserRouter([
       {
         path: '/search/:query/:page',
         element: <Search />
-      }
+      },
     ]
   }
 ])

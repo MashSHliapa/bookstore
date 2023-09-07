@@ -1,11 +1,12 @@
-import { client } from "../utils/client";
-import { booksEndpoint } from "../api";
-import { bookEndpoint } from "../api";
-import { searchEndpoint } from "../api";
+// client
+import { client } from '../utils/client'
+// api
+import { booksEndpoint } from '../api'
+import { bookEndpoint } from '../api'
+import { searchEndpoint } from '../api'
 
 export const requestBooks = async () => {
   const { data } = await client.get(booksEndpoint)
-  console.log(data)
   return data.books
 }
 
@@ -14,7 +15,7 @@ export const requestBookById = async (isbn13: string) => {
   return data
 }
 
-export const requestSearchBooks = async (query, page) => {
+export const requestSearchBooks = async (query: string, page: string) => {
   const { data } = await client.get(searchEndpoint + '/' + query + '/' + page)
   return data
 }

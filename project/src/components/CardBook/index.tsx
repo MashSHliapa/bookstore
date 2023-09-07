@@ -1,31 +1,32 @@
 // core
 import { useSelector, useDispatch } from 'react-redux'
 // components
-import { FavoritesCondition } from '../favoriteCondition/FavoriteCondition'
-import { Rating } from '../raiting/Raiting'
-// redux
-import { setCart } from '../../redux/cartSlice'
+import { FavoritesCondition } from '../FavoriteCondition'
+import { Rating } from '../Raiting'
+import { Title } from '../Title/index'
+// slices
+import { addBookToCart } from '../../redux/cartSlice'
 // types
-import { CardForBookProps } from '../../types/interfaces'
-import { RootState } from '../../redux/store'
+import { BookProps } from '../../types/interfaces'
 import { BookResponse } from '../../types/interfaces'
+// store
+import { RootState } from '../../redux/store'
 // styles
-import './CardForBook.scss'
+import './CardBook.scss'
 
 
-export function CardForBook(props: CardForBookProps): JSX.Element {
+
+export function CardBook(props: BookProps): JSX.Element {
   const dispatch = useDispatch()
 
-  // Для проверки на наличие такой книги в корзине
-  const yourCart = useSelector((state: RootState) => {
-    console.log(state)
+  const cart = useSelector((state: RootState) => {
     return state.cart.data
   })
 
   function handleClickAddToCart(event: React.MouseEvent<HTMLButtonElement>) {
-    const isBookInCart = yourCart.some((item: BookResponse) => item.isbn13 === props.book.isbn13);
+    const isBookInCart = cart.some((item: BookResponse) => item.isbn13 === props.book.isbn13);
     if (!isBookInCart) {
-      dispatch(setCart(props.book));
+      dispatch(addBookToCart(props.book));
       event.currentTarget.style.backgroundColor = 'green';
     }
     else {
@@ -35,7 +36,7 @@ export function CardForBook(props: CardForBookProps): JSX.Element {
 
   return (
     <div className="card-book">
-      <div className="card-book__title">{props.book.title}</div>
+      <Title title={props.book.title}/>
       <div className="card-book__card-group">
         <div className="card-book__image">
           <div className="card-book__favorite">
@@ -55,8 +56,12 @@ export function CardForBook(props: CardForBookProps): JSX.Element {
           <div className="card-book__language"><b>language:</b> {props.book.language}</div>
           <div className="card-book__format"><b>Format:</b> Paper book / ebook (PDF) </div>
           <button type="button" className="btn btn-secondary w-100" onClick={handleClickAddToCart}>add to cart</button>
-          <div className="card-book__preview">{props.book.pdf &&
-            <a href={props.book.pdf['Free eBook'] || props.book.pdf['Chapter 2'] || '#'} target="_blank">Preview book</a>}</div>
+
+          <div className={`card-book__preview ${props.book.pdf ? 'd-block' : 'd-none'}`}>
+            {props.book.pdf && (
+              <a href={props.book.pdf['Free eBook'] || props.book.pdf['Chapter 2'] || props.book.pdf['Chapter 3']} target="_blank">Preview book</a>
+            )}
+          </div>
         </div>
       </div>
       <div className="book__subtitle">{props.book.subtitle}</div>

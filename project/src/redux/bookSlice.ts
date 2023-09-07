@@ -1,14 +1,17 @@
-import { BookResponse } from "../types/interfaces"
-import { requestBookById } from "../services/books"
-import { put } from "redux-saga/effects"
+// core
+import { put } from 'redux-saga/effects'
 import { createAction, createSlice } from '@reduxjs/toolkit'
+// services
+import { requestBookById } from '../services/books'
+// types
+import { BookInitialState, BookResponse } from '../types/interfaces'
+
 
 export function* getBookSaga({payload: { isbn13 }}: {payload: {isbn13: string}}) {
   yield put(setLoading(true))
 
   try {
     const payload: BookResponse = yield requestBookById(isbn13)
-    console.log(payload)
     yield put(getBookSuccess(payload))
   } catch (error) {
     yield put(setError(error))
@@ -22,7 +25,7 @@ const bookSlice = createSlice({
     data: {},
     loading: false,
     error: null,
-  },
+  } as BookInitialState,
   reducers: {
     getBookSuccess: (state, action) => {
       state.data = action.payload
@@ -36,10 +39,9 @@ const bookSlice = createSlice({
   },
 })
 
-export const GET_BOOK = 'book/getBook'
+export const GET_BOOK: string = 'book/getBook'
 
-export const getBook = createAction(GET_BOOK)
-console.log(getBook)
+export const getBook = createAction<string>(GET_BOOK)
 
 export const { setLoading, getBookSuccess, setError } = bookSlice.actions
 export const bookReducer = bookSlice.reducer

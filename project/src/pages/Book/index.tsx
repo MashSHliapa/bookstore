@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 // components
-import { ComeBack } from '../../components/comeBack/ComeBack'
-import { CardForBook } from '../../components/cardForBook/CardForBook'
+import { ComeBack } from '../../components/ComeBack'
+import { CardBook } from '../../components/CardBook/index'
 // slice
 import { getBook } from '../../redux/bookSlice'
 // types
@@ -32,7 +32,7 @@ export function Book(): JSX.Element {
   return (
     <div className="book m-auto">
       <ComeBack />
-      <CardForBook book={book} />
+      <CardBook book={book} />
     </div>
   )
 }
